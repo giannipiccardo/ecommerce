@@ -19,9 +19,39 @@
 <body>
   <main class="mt-5">
     <div class="container">
-      <div class="alert alert-danger text-center" role="alert">
-        <h4 class="alert-heading">Funcionalidad en desarrollo</h4>
-      </div>
+      <main>
+        <div class="row mt-4">
+          <div class="col">
+            <h1 class="mb-3">Iniciar Sesión</h1>
+            <hr class="my-4">
+            <div class="row g-3">
+
+              <form>
+              <div class="col-12">
+                <label for="email" class="form-label">Email</label>
+                <input type="email" class="form-control" id="email" required>
+              </div>
+  
+              <div class="col-12">
+                <label for="password1" class="form-label">Contraseña</label>
+                <input type="password" class="form-control" id="password1" required>
+              </div><br>
+
+              <button onclick="iniciarSesion()" class="btn btn-primary" type="button" id="regBtn">Iniciar Sesión</a>
+              </form>
+  
+            </div>
+          </div>
+        </div>
+  
+      </main>
+  
+      <footer class="my-5 pt-5 text-muted text-center text-small">
+        <p class="mb-1">Este sitio forma parte de <a href="https://jovenesaprogramar.edu.uy/" target="_blank">Jovenes a
+            Programar</a> - 2022</p>
+        <p class="mb-1">Es un sitio generado con fines estrictamente educativos. No realiza registros ni guarda datos de
+          ningún tipo.</p>
+      </footer>
     </div>
   </main>
   <footer class="text-muted">
@@ -38,3 +68,4 @@
 </body>
 
 </html>
+
