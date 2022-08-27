@@ -11,4 +11,17 @@ document.addEventListener("DOMContentLoaded", function(){
         localStorage.setItem("catID", 103);
         window.location = "products.html"
     });
+
+    mostrarMailEnNav()
 });
+
+
+function mostrarMailEnNav(){
+    let guardarElemento = document.getElementById("EmailLogueado")
+    // console.log(guardarElemento)
+    // console.log(guardarElemento.__proto__)
+    let value = localStorage.getItem("email")
+    // console.log(value)
+    // console.log(guardarElemento.innerText)
+    guardarElemento.innerText = value;
+}
