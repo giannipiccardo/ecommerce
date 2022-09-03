@@ -48,7 +48,8 @@ function showCategoriesList(){
 
         if (((minCount == undefined) || (minCount != undefined && parseInt(category.productCount) >= minCount)) &&
             ((maxCount == undefined) || (maxCount != undefined && parseInt(category.productCount) <= maxCount))){
-
+            //es lo mismo que poner
+            //((!parseInt(category.productCount) < minCount) && (!parseInt(category.productCount) > maxCount))
             htmlContentToAppend += `
             <div onclick="setCatID(${category.id})" class="list-group-item list-group-item-action cursor-active">
                 <div class="row">
@@ -87,6 +88,7 @@ function sortAndShowCategories(sortCriteria, categoriesArray){
 //Función que se ejecuta una vez que se haya lanzado el evento de
 //que el documento se encuentra cargado, es decir, se encuentran todos los
 //elementos HTML presentes.
+
 document.addEventListener("DOMContentLoaded", function(e){
     getJSONData(CATEGORIES_URL).then(function(resultObj){
         if (resultObj.status === "ok"){
@@ -135,7 +137,7 @@ document.addEventListener("DOMContentLoaded", function(e){
             maxCount = parseInt(maxCount);
         }
         else{
-            maxCount = undefined;
+            maxCount = undefined; 
         }
 
         showCategoriesList();
