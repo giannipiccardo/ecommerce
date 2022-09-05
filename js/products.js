@@ -12,8 +12,10 @@ document.addEventListener('DOMContentLoaded', () => {
 })
 
 async function empezarListarProductos() {
-    let urls = PRODUCTS_URL+localStorage.getItem("catID")+EXT_TYPE
-    const datos = await getJSONData(urls)
+    const url = PRODUCTS_URL + localStorage.getItem("catID") + EXT_TYPE;
+    //"https://japceibal.github.io/emercado-api/cats_products/101.json"
+
+    const datos = await getJSONData(url)
     console.log("datos:") 
     console.log(datos)
 
