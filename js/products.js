@@ -27,6 +27,11 @@ async function empezarListarProductos() {
     showProductsList()
 }
 
+function setProdID(id) {
+    localStorage.setItem("prodID", id);
+    window.location = "product-info.html"
+}
+
 function showProductsList() {
 
     let htmlContentToAppend = "";
@@ -34,7 +39,7 @@ function showProductsList() {
         if (((minCount == undefined) || (minCount != undefined && parseInt(producto.cost) >= minCount)) &&
             ((maxCount == undefined) || (maxCount != undefined && parseInt(producto.cost) <= maxCount))){
                 htmlContentToAppend += `
-                    <div onclick="setCatID(${producto.id})" class="list-group-item list-group-item-action cursor-active">
+                    <div onclick="setProdID(${producto.id})" class="list-group-item list-group-item-action cursor-active">
                         <div class="row">
                             <div class="col-3">
                                 <img src="${producto.image}" alt="${producto.description}" class="img-thumbnail">
