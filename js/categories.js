@@ -35,8 +35,9 @@ function sortCategories(criteria, array){
     return result;
 }
 
-function setCatID(id) {
+function setCatID(id, name) {
     localStorage.setItem("catID", id);
+    localStorage.setItem("catName", name);
     window.location = "products.html"
 }
 
@@ -51,7 +52,7 @@ function showCategoriesList(){
             //es lo mismo que poner
             //((!parseInt(category.productCount) < minCount) && (!parseInt(category.productCount) > maxCount))
             htmlContentToAppend += `
-            <div onclick="setCatID(${category.id})" class="list-group-item list-group-item-action cursor-active">
+            <div onclick="setCatID(${category.id}, '${category.name}')" class="list-group-item list-group-item-action cursor-active">
                 <div class="row">
                     <div class="col-3">
                         <img src="${category.imgSrc}" alt="${category.description}" class="img-thumbnail">
@@ -92,7 +93,9 @@ function sortAndShowCategories(sortCriteria, categoriesArray){
 document.addEventListener("DOMContentLoaded", function(e){
     getJSONData(CATEGORIES_URL).then(function(resultObj){
         if (resultObj.status === "ok"){
-            currentCategoriesArray = resultObj.data
+            currentCategoriesArray = resultObj.data;
+            // console.log("currentCategoriesArray")
+            // console.log(currentCategoriesArray)
             showCategoriesList()
             //sortAndShowCategories(ORDER_ASC_BY_NAME, resultObj.data);
         }

@@ -188,3 +188,8 @@ a.custom-card:hover {
 .checked {
   color: orange;
 }
+
+.estrellas{
+  color: #ff9d00;
+  text-shadow: 0px 0px 0px black;
+}
