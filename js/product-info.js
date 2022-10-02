@@ -4,8 +4,10 @@ async function empezarListarProducto() {
     //"https://japceibal.github.io/emercado-api/products/50742.json"
 
     const datos = await getJSONData(url)
-    // console.log(datos)
+    console.log("datos producto")
+    console.log(datos)
     showProduct(datos.data);
+    relatedProducts(datos.data.relatedProducts)
 }
 
 theData = {}
@@ -103,29 +105,11 @@ async function obtainAndLoadComments() {
 
     const datos = await getJSONData(url2)
 
-    // console.log("datos")
+    // console.log("datos comentarios")
     // console.log(datos)
 
     loadComments(datos.data);
-}
-
-function date() {
-
-    let today = new Date();
-    let day = today.getDate();
-    let month = today.getMonth() + 1;
-    let hour = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
-    if (day < 10) {
-        day = "0" + day;
-    }
-    if (hour < 10) {
-        hour = "0" + hour;
-    }
-    if (day < 10) {
-        day = "0" + day;
-    }
-    let date = today.getFullYear() + "-" + month + "-" + day + "-" + hour;
-    return date
+    goUp()
 }
 
 //Función para cargar los comentarios.
@@ -166,4 +150,32 @@ function showStars(score) {
         }
     }
     return addScore;
+}
+
+function relatedProducts(relatedProducts){
+    let products = "";
+    // console.log("relatedProducts:")
+    // console.log(relatedProducts)
+    for (let product of relatedProducts) {
+        products += `
+        <div class="col col-md-6 col-lg-4 col-xl-3" onclick="setIDAndReload(${product.id})">
+            <div class="card px-2" style="width: 18rem;">
+                <img src="${product.image}" class="card-img-top" alt="${product.name}">
+                <div class="card-body">
+                    <h5 class="card-title">${product.name}</h5>
+                </div>
+            </div>
+        </div>
+        `
+    }
+    document.getElementById("related").innerHTML = products
+}
+
+function setIDAndReload(id){
+    localStorage.setItem("prodID", id)
+    window.location.reload();
+}
+
+function goUp(){
+    window.scrollTo({ top: 0, behavior: 'smooth' });
 }

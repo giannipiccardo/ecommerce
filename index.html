@@ -29,11 +29,20 @@
           <li class="nav-item">
             <a class="nav-link" href="sell.html">Vender</a>
           </li>
-          <li class="nav-item">
+          <li id="item_iniciar_sesion" class="nav-item">
             <a class="nav-link" href="login.html">Iniciar Sesión</a>
           </li>
-          <li class="nav-item text-primary">
-            <p id="EmailLogueado"></p>
+          <li id="dropdown_usuario" class="nav-item oculto">
+            <div class="dropdown">
+              <button class="btn btn-secondary dropdown-toggle" type="button" id="EmailLogueado" data-bs-toggle="dropdown" aria-expanded="false">
+                Dropdown button
+              </button>
+              <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                <li><a class="dropdown-item" href="my-profile.html">Mi perfil</a></li>
+                <li><a class="dropdown-item" href="cart.html">Mi Carrito</a></li>
+                <li><a class="dropdown-item"><button onclick="logOut()" type="button" id="regBtn">Cerrar Sesión</a></li>
+              </ul>
+            </div>
           </li>
         </ul>
       </div>
@@ -94,6 +103,7 @@
   <script src="js/bootstrap.bundle.min.js"></script>
   <script src="js/index.js"></script>
   <script src="js/init.js"></script>
+  <script src="js/login.js"></script>
 </body>
 
 </html>

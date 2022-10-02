@@ -39,3 +39,29 @@ let getJSONData = function(url){
         return result;
     });
 }
+
+function showOrRemoveLoginSign(){
+  if (localStorage.getItem("email")){
+    document.getElementById("item_iniciar_sesion").classList.add("oculto");
+    document.getElementById("dropdown_usuario").classList.remove("oculto");
+  }else{
+    document.getElementById("item_iniciar_sesion").classList.remove("oculto");
+    document.getElementById("dropdown_usuario").classList.add("oculto");
+  }
+}
+
+
+function mostrarMailEnNav(){
+  let guardarElemento = document.getElementById("EmailLogueado")
+  // console.log(guardarElemento)
+  // console.log(guardarElemento.__proto__)
+  let value = localStorage.getItem("email")
+  // console.log(value)
+  // console.log(guardarElemento.innerText)
+  guardarElemento.innerText = value;
+}
+
+document.addEventListener("DOMContentLoaded", function(){
+  showOrRemoveLoginSign()
+  mostrarMailEnNav()
+});
