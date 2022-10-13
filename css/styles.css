@@ -201,3 +201,11 @@ a.custom-card:hover {
 .card{
   cursor: pointer;
 }
+
+.centrar{
+  text-align: center;
+}
+
+.input-numero{
+  max-width: 50px;
+}
