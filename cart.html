@@ -49,11 +49,9 @@
       </div>
     </div>
   </nav>
+
   <main>
     <div class="container">
-      <!-- <div class="alert alert-danger text-center" role="alert">
-        <h4 class="alert-heading">Funcionalidad en desarrollo</h4>
-      </div> -->
       <h2 class="centrar">Carrito de compras</h2>
       <h3>Artículos a comprar:</h3>
       <table class="table">
@@ -74,42 +72,42 @@
       <form>
         <h3 class="mt-2">Tipo de envío:</h3>
         <div class="form-check mt-3">
-          <input class="form-check-input" type="radio" name="envio" id="Premium" value="Premium" checked required>
+          <input class="form-check-input" type="radio" name="envio" value="15" checked required>
           <label class="form-check-label" for="Premium">
             Premium 2 a 5 días (15%)
           </label>
         </div>
         <div class="form-check my-2">
-          <input class="form-check-input" type="radio" name="envio" id="Express" value="Express" checked required>
+          <input class="form-check-input" type="radio" name="envio" value="7" required>
           <label class="form-check-label" for="Express">
             Express 5 a 8 días (7%)
           </label>
         </div>
         <div class="form-check mb-3">
-          <input class="form-check-input" type="radio" name="envio" id="Standard" value="Standard" checked required>
+          <input class="form-check-input" type="radio" name="envio" value="5" required>
           <label class="form-check-label" for="Standard">
             Standard 12 a 15 días (5%)
           </label>
         </div>
 
-        
         <div class="row">
           <h3 class="mt-2">Dirección de envío:</h3>
           <div class="col-12 col-lg-6">
             <div class="form-group">
               <label for="inputDireccion">Dirección</label>
-              <input type="text" class="form-control" id="inputDireccion" placeholder="">
+              <input type="text" class="form-control" id="inputDireccion" placeholder="" required>
             </div>
           </div>
           <div class="col-12 col-lg-6">
             <div class="form-group">
               <label for="inputDireccion2">Dirección 2</label>
-              <input type="text" class="form-control" id="inputDireccion2" placeholder="">
+              <input type="text" class="form-control" id="inputDireccion2" placeholder="" required>
             </div>
           </div>
         </div>
+
         <div class="row mt-3">
-          <div class="form-group col-md-4">
+          <div class="form-group col-md-4" required>
             <label for="inputDepartamento">Departamento</label>
             <select id="inputDepartamento" class="form-control">
               <option selected>Elegir...</option>
@@ -134,18 +132,161 @@
               <option value="Flores">Flores</option>
             </select>
           </div>
-          <div class="form-group col-md-6">
+          <div class="form-group col-md-6" required>
             <label for="inputLocalidad">Localidad</label>
             <input type="text" class="form-control" id="inputLocalidad">
           </div>
-          <div class="form-group col-md-2">
+          <div class="form-group col-md-2" required>
             <label for="inputZip">Código Zip</label>
             <input type="number" class="form-control" id="inputZip">
           </div>
         </div>
-        <button type="submit" class="btn btn-primary mt-3">Enviar</button>
-      </form>
 
+        <div id="subtotal">
+        </div>
+        <div id="costoEnvio">
+        </div>
+        <div id="total">
+        </div>
+        
+        <div class="row">
+          <h3 class="mt-4">Forma de pago:</h3>
+          <div class="col-12 col-lg-6">
+            <div class="form-group">
+              <a type="button" class="" data-bs-toggle="modal" data-bs-target="#modalDePago">
+                Seleccione
+              </a>
+              <div class="modal fade" id="modalDePago" tabindex="-1" aria-labelledby="ejemploModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h1 class="modal-title fs-5" id="exampleModalLabel"><strong>Forma de pago:</strong></h1>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                      <div class="form-check">
+                        <input class="form-check-input" type="radio" name="medioDePago" id="TarjCredito"
+                          value="TarjCredito" checked required>
+                        <label class="form-check-label" for="TarjCredito">
+                          Tarjeta de crédito o débito
+                        </label>
+                      </div>
+                      <div class="row">
+                        <div class="col-8 mt-3">
+                          <div class="form-group">
+                            <label for="inputDireccion">Número de tarjeta:</label>
+                            <input type="number" class="form-control mt-1" id="inputDireccion"
+                              placeholder="XXXX-XXXX-XXXX-XXXX">
+                          </div>
+                        </div>
+                        <div class="col-4 mt-3">
+                          <div class="form-group">
+                            <label for="inputDireccion">Código de Seg:</label>
+                            <input type="number" class="form-control mt-1" id="inputDireccion" placeholder="XXX">
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-3 mt-3">
+                          <label for="inputVencimiento">Vencimiento</label>
+                          <select name="expireMM" id="expireMM" class="form-control mt-1">
+                            <option value=''>Mes</option>
+                            <option value='01'>Enero </option>
+                            <option value='02'>Febrero</option>
+                            <option value='03'>Marzo</option>
+                            <option value='04'>Abril</option>
+                            <option value='05'>Mayo</option>
+                            <option value='06'>Junio</option>
+                            <option value='07'>Julio</option>
+                            <option value='08'>Agosto</option>
+                            <option value='09'>Septiembre</option>
+                            <option value='10'>Octubre</option>
+                            <option value='11'>Noviembre</option>
+                            <option value='12'>Diciembre</option>
+                          </select>
+                        </div>
+                        <div class="col-3 mt-3">
+                          <label for="inputVencimiento"></label>
+                          <select name='expireYY' id="expireYY" class="form-control mt-1">
+                            <option value=''>Año</option>
+                            <option value='22'>2022</option>
+                            <option value='23'>2023</option>
+                            <option value='24'>2024</option>
+                            <option value='25'>2025</option>
+                            <option value='26'>2026</option>
+                            <option value='27'>2027</option>
+                            <option value='28'>2028</option>
+                            <option value='29'>2029</option>
+                            <option value='30'>2030</option>
+                            <option value='31'>2031</option>
+                          </select>
+                        </div>
+
+                        <input class="inputCard" type="hidden" name="expiry" id="expiry" maxlength="4" />
+                        <div class="col-6 mt-3">
+                          <div>
+                            <label for="inputTarjeta">Tarjeta</label>
+                            <select id="inputTarjeta" class="form-control mt-1">
+                              <option selected>Elegir...</option>
+                              <option value="Visa">Visa</option>
+                              <option value="VisaDebito">Visa Débito</option>
+                              <option value="MasterCard">MasterCard</option>
+                              <option value="MasterCardDebito">MasterCard Débito</option>
+                              <option value="Oca">Oca</option>
+                              <option value="Creditel">Creditel</option>
+                              <option value="Lider">Lider</option>
+                              <option value="Lider">Dinner Club</option>
+                            </select>
+                          </div>
+                        </div>
+                      </div>
+                      <hr>
+                      <div class="form-check my-2">
+                        <input class="form-check-input" type="radio" name="medioDePago" id="transfBancaria"
+                          value="transfBancaria" checked required>
+                        <label class="form-check-label" for="transfBancaria">
+                          Transferencia Bancaria
+                        </label>
+                      </div>
+                      <div class="row">
+                        <div class="col-8 mt-3">
+                          <div class="form-group">
+                            <label for="inputDireccion">Número de cuenta:</label>
+                            <input type="text" class="form-control mt-1" id="inputDireccion" placeholder="">
+                          </div>
+                        </div>
+                        <div class="col-4 mt-3">
+                          <div>
+                            <label for="inputBanco">Banco</label>
+                            <select id="inputBanco" class="form-control mt-1">
+                              <option selected>Elegir...</option>
+                              <option value="Brou">Brou</option>
+                              <option value="Santander">Santander</option>
+                              <option value="Itau">Itau</option>
+                              <option value="BBVA">BBVA</option>
+                              <option value="Citibank">Citibank</option>
+                              <option value="Scotiabank">Scotiabank</option>
+                              <option value="HSBC">HSBC</option>
+                              <option value="Bandes">Bandes</option>
+                            </select>
+                          </div>
+                        </div>
+                      </div>
+                      <hr>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="submit" class="btn btn-primary">Cerrar</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary mt-3">Finalizar compra</button>
+      </form>
     </div>
   </main>
 

@@ -209,3 +209,7 @@ a.custom-card:hover {
 .input-numero{
   max-width: 50px;
 }
+
+#border{
+  border-radius: gray 5px;
+}
