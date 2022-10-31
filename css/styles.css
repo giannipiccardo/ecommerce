@@ -195,7 +195,7 @@ a.custom-card:hover {
 }
 
 .oculto{
-  display: none;
+  display: none !important;
 }
 
 .card{
@@ -211,5 +211,6 @@ a.custom-card:hover {
 }
 
 #border{
-  border-radius: gray 5px;
+  border-color: gray;
+  border-radius: 5px;
 }
