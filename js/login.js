@@ -21,14 +21,3 @@ function validacionLogin(email, password) {
 function guardarEnLocalStorage(key, value) {
     localStorage.setItem(key, value);
 }
-
-function logOut(){
-    // console.log("esta entrando a logOut()")
-    
-    takeOutOfLocalStorage("email");
-    window.location.href = "index.html";
-}
-
-function takeOutOfLocalStorage(key){
-    localStorage.removeItem(key);
-}

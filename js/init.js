@@ -69,3 +69,15 @@ document.addEventListener("DOMContentLoaded", function(){
 function numberWithDots(x) {
   return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 }
+
+function takeOutOfLocalStorage(key){
+  localStorage.removeItem(key);
+}
+
+function logOut(){
+  // console.log("esta entrando a logOut()")
+  
+  takeOutOfLocalStorage("email");
+  takeOutOfLocalStorage("userObj");
+  window.location.href = "index.html";
+}
