@@ -35,28 +35,36 @@ function setProdID(id) {
 
 
 
-function showProductsList() {
+function showProductsList(cosaabuscar) {
+    let currentProductsArrayFiltered = null;
+    if(cosaabuscar) {
+        currentProductsArrayFiltered = currentProductsArray.filter(producto => 
+            producto.name.toLowerCase().includes(cosaabuscar.toLowerCase()) || 
+            producto.description.toLowerCase().includes(cosaabuscar.toLowerCase())
+        )
+        console.log(currentProductsArrayFiltered)
+    }
 
     let htmlContentToAppend = "";
-    for (let producto of currentProductsArray) {
+    for (let producto of (currentProductsArrayFiltered || currentProductsArray)) {
         if (((minCount == undefined) || (minCount != undefined && parseInt(producto.cost) >= minCount)) &&
             ((maxCount == undefined) || (maxCount != undefined && parseInt(producto.cost) <= maxCount))) {
             htmlContentToAppend += `
-                    <div onclick="setProdID(${producto.id})" class="list-group-item list-group-item-action cursor-active">
-                        <div class="row">
-                            <div class="col-3">
-                                <img src="${producto.image}" alt="${producto.description}" class="img-thumbnail">
+                <div onclick="setProdID(${producto.id})" class="list-group-item list-group-item-action cursor-active">
+                    <div class="row">
+                        <div class="col-3">
+                            <img src="${producto.image}" alt="${producto.description}" class="img-thumbnail">
+                        </div>
+                        <div class="col">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h4 class="mb-1">${producto.name} - ${numberWithDots(producto.cost)} ${producto.currency}</h4>       
+                                <small class="text-muted">${producto.soldCount} Vendidos</small>
                             </div>
-                            <div class="col">
-                                <div class="d-flex w-100 justify-content-between">
-                                    <h4 class="mb-1">${producto.name} - ${numberWithDots(producto.cost)} ${producto.currency}</h4>       
-                                    <small class="text-muted">${producto.soldCount} Vendidos</small>
-                                </div>
-                                <p class="mb-1">${producto.description}</p>
-                            </div>
+                            <p class="mb-1">${producto.description}</p>
                         </div>
                     </div>
-                    `
+                </div>
+                `
         }
     }
     //console.log(htmlContentToAppend)
@@ -154,3 +162,8 @@ function setearEventListeners() {
 function numberWithDots(x) {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 }
+
+document.getElementById("barraDeBusqueda").addEventListener("keyup",(e)=>{
+    // console.log(e)
+    showProductsList(e.target.value);
+})
