@@ -73,7 +73,7 @@
       <form id="myForm" class="row mt-4 needs-validation" novalidate>
         <!-- action="#"  -->
         <div class="row mt-3">
-          
+
           <div class="col">
 
             <div class="row mt-3">
@@ -89,7 +89,7 @@
               </div>
 
             </div>
-            
+
             <div class="row mt-3">
 
               <div class="col-12 col-lg-6">
@@ -143,7 +143,8 @@
               <div class="col-12 col-lg-6">
                 <div class="form-group">
                   <label for="email" class="form-label">E-mail</label>
-                  <input type="email" class="form-control" id="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" placeholder="ejemplo@gmail.com" required>
+                  <input type="email" class="form-control" id="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+                    placeholder="ejemplo@gmail.com" required>
                   <!-- <div class="invalid-feedback">
                     Debe ingresar su dirección de email.
                   </div> -->
@@ -168,7 +169,10 @@
               <div class="col-12 col-lg-6">
                 <div class="form-group">
                   <label for="avatar" class="form-label">Avatar</label>
-                  <input type="file" class="form-control" id="avatar" name="avatar" accept="image/png, image/jpeg">
+                  <!-- <input type="file" class="form-control" id="avatar" name="avatar" accept="image/png, image/jpeg"> -->
+                  <input id="file" type="file" onchange="encodeImageFileAsURL();" />
+                  <!-- <div id="imgTest"></div> -->
+                  <!-- <input type="file" onchange="encodeImageFileAsURL(this)" /> -->
                   <!-- <div class="invalid-feedback">
                     Debe ingresar su dirección de email.
                   </div> -->

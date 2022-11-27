@@ -30,6 +30,7 @@ function loadCart(articles) {
                 <td>${article.currency} <span id="costo-${i}">${article.unitCost}</span></td>
                 <td><input id="input-${i}" class="form-control input-numero" type="number" min="0" max="99" value="${article.count}" onchange="miFuncion(${i})" onkeyup="miFuncion(${i})" style="min-width:100px"></td>
                 <td>${article.currency} <span id="span-${i}">${article.unitCost * article.count}</span></td>
+                <td><img src="./img/eliminar.png" alt="eliminar" width="35px" /></td>
             </tr>
         `
     }

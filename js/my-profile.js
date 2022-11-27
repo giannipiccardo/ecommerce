@@ -23,7 +23,7 @@ function extraerDelLocalStorage() {
     //checkear al inicio si está logueado o no
     if (localStorage.getItem("email")) {
         document.getElementById("email").value = localStorage.getItem("email")
-    }else{
+    } else {
         window.location.href = "login.html";
     }
 
@@ -57,32 +57,40 @@ function mandarLocalStorageDatos() {
     }
     console.log(userObj)
     localStorage.setItem("userObj", JSON.stringify(userObj))
-    getImg()
 }
 
-function getImg() {
-    const avatarElement = document.getElementById("avatar");
-    const image = avatarElement.files[0];
-    console.log("avatar")
-    console.log(avatar)
-    if (image) {
-        const urlImage = convertImage(image)
-    }
+function toDataURL(url, callback) {
+    var xhr = new XMLHttpRequest();
+    xhr.onload = function () {
+        var reader = new FileReader();
+        reader.onloadend = function () {
+            callback(reader.result);
+        }
+        reader.readAsDataURL(xhr.response);
+    };
+    xhr.open('GET', url);
+    xhr.responseType = 'blob';
+    xhr.send();
 }
+toDataURL('https://cdn.discordapp.com/attachments/571092147801948204/784586541146177606/6f32c864-985a-481d-8d8e-bd1f14ab9951.png', function (dataUrl) {
+    console.log('RESULT:', dataUrl)
+})
 
-function convertImage(image) {
-    var reader = new FileReader();
-    console.log("next");
-
-    reader.onload = function () {
-        base64String = reader.result.replace("data:", "")
-            .replace(/^.+,/, "");
-
-        imageBase64Stringsep = base64String;
-
-        // alert(imageBase64Stringsep);
-        console.log(base64String);
-        return base64String
+function encodeImageFileAsURL() {
+    var filesSelected = document.getElementById("file").files;
+    if (filesSelected.length > 0) {
+        var fileToLoad = filesSelected[0];
+        var fileReader = new FileReader();
+        fileReader.onload = function (fileLoadedEvent) {
+            var srcData = fileLoadedEvent.target.result; // <--- data: base64
+            var newImage = document.createElement('img');
+            newImage.src = srcData;
+            newImage.classList.add("imgSize")
+            // add.classList("imgSize")
+            document.getElementById("showImage").innerHTML = newImage.outerHTML;
+            // alert("Converted Base64 version is " + document.getElementById("imgTest").innerHTML);
+            // console.log("Converted Base64 version is " + document.getElementById("imgTest").innerHTML);
+        }
+        fileReader.readAsDataURL(fileToLoad);
     }
-    reader.readAsDataURL(image);
 }
